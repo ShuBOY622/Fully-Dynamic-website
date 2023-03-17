@@ -5,10 +5,18 @@ const app=express();
 const PORT=process.env.PORT || 5556;
 const mongoose=require('mongoose');
 const Detail=require('./models/details');
-const Slider=require('./models/Slider')
+const Slider=require('./models/Slider');
+const Cards = require('./models/Cards');
+const bodyParser=require('body-parser')
 
+app.use(bodyParser.urlencoded(
+    {
+        extended:true
+    }
+))
 app.use('/static',express.static("public"));
 app.use('',routes);
+
 
 
 //db Connection
@@ -20,6 +28,16 @@ mongoose.connect(uri , {
     // console.log(con.connections); 
     console.log('Database Connected Successfullyy');
 
+    Cards.create([
+        
+            {
+                cardTitle:"Title1",
+                cardText:"CardText",
+                button1:"Button 1",
+                button2:"Button2"
+            }
+        ]
+    )
     // Slider.create([
     //     {
     //         title: "Recent Buzz...",
@@ -75,6 +93,6 @@ hbs.registerPartials('views/partials')
 
 app.listen(PORT,()=>
 {
-    console.log(`Server started at ${PORT} ...`)
+    console.log(`Server started at  ...`)
 })
 
