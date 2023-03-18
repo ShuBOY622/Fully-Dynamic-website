@@ -20,7 +20,7 @@ app.use('',routes);
 
 
 //db Connection
-const uri='mongodb+srv://Shubham:Shubham%40123@shubham.8mkpyrc.mongodb.net/?retryWrites=true&w=majority'
+const uri='mongodb+srv://<username>:<password>@shubham.8mkpyrc.mongodb.net/?retryWrites=true&w=majority'
 
 mongoose.connect(uri , {
     useNewUrlParser: true,
